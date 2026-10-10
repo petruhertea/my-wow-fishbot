@@ -29,3 +29,10 @@ def update_screen():
 
 if __name__ == "__main__":
     main_agent = MainAgent()
+    update_screen_thread = Thread(
+        target=update_screen,
+        args=(),
+        name="update screen thread",
+        daemon=False)
+    update_screen_thread.start()
+    print("Thread started")
