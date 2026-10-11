@@ -14,12 +14,14 @@ class MainAgent:
         self.current_imageHSV = None # HSV Image
         
         self.zone = "Darkmoon Island"
-        self.time="night"
+        self.time="midnight"
         
         # print("MainAgent setup complete...")
 
 def update_screen(agent):
         t0 = time.time()
+        fps_report_delay = 5
+        fps_report_time = time.time()
         while True:
             agent.current_image = ImageGrab.grab()
             agent.current_image = np.array(agent.current_image)
@@ -31,8 +33,11 @@ def update_screen(agent):
             if key == ord('q'):
                 break
             ex_time = time.time() - t0
-            # print("FPS: " + str(1 / (ex_time)))
+            if time.time() - fps_report_time >= fps_report_delay:
+                print("FPS: " + str(1 / (ex_time)))
+                fps_report_time = time.time()
             t0 = time.time()
+            time.sleep(0.005)
             
 def print_menu():
     print("Enter command:")
