@@ -252,7 +252,7 @@ class FishingAgent:
 
     def pull_line(self):
         print("Pulling line")
-        self._press('ctrl', 'f')        # your original keybind; adjust if needed
+        self._press('ctrl', 'f')
         time.sleep(0.010)
 
     def run(self):
